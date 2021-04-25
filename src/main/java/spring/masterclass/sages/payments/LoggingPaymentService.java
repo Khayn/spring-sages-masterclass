@@ -2,7 +2,9 @@ package spring.masterclass.sages.payments;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
+import org.springframework.stereotype.Component;
 
+@Component
 @Log
 @RequiredArgsConstructor
 public class LoggingPaymentService implements PaymentService {

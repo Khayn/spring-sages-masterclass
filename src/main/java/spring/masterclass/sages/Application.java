@@ -1,21 +1,29 @@
 package spring.masterclass.sages;
 
 import lombok.extern.java.Log;
-import spring.masterclass.sages.payments.*;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import spring.masterclass.sages.payments.LocalMoney;
+import spring.masterclass.sages.payments.LoggingPaymentService;
+import spring.masterclass.sages.payments.PaymentRequest;
 
 @Log
 public class Application {
+	private static final String BASE_PACKAGE = "spring.masterclass.sages";
 
 	public static void main(String[] args) {
-		var paymentIdGenerator = new IncrementalPaymentIdGenerator();
-		var fakePaymentService = new FakePaymentService(paymentIdGenerator);
-		var paymentService = new LoggingPaymentService(fakePaymentService);
 
-		var paymentRequest = PaymentRequest.builder()
-				.money(LocalMoney.of(1_000))
-				.build();
+		try (AnnotationConfigApplicationContext applicationContext =
+					 new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
+			var paymentService = applicationContext.getBean(LoggingPaymentService.class);
 
-		var payment = paymentService.process(paymentRequest);
-		log.info(payment.toString());
+			var paymentRequest = PaymentRequest.builder()
+					.money(LocalMoney.of(1_000))
+					.build();
+
+			var payment = paymentService.process(paymentRequest);
+			log.info(payment.toString());
+
+		}
+
 	}
 }
