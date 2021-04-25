@@ -1,17 +1,15 @@
 package spring.masterclass.sages;
 
 import lombok.extern.java.Log;
-import spring.masterclass.sages.payments.FakePaymentService;
-import spring.masterclass.sages.payments.IncrementalPaymentIdGenerator;
-import spring.masterclass.sages.payments.LocalMoney;
-import spring.masterclass.sages.payments.PaymentRequest;
+import spring.masterclass.sages.payments.*;
 
 @Log
 public class Application {
 
 	public static void main(String[] args) {
 		var paymentIdGenerator = new IncrementalPaymentIdGenerator();
-		var paymentService = new FakePaymentService(paymentIdGenerator);
+		var fakePaymentService = new FakePaymentService(paymentIdGenerator);
+		var paymentService = new LoggingPaymentService(fakePaymentService);
 
 		var paymentRequest = PaymentRequest.builder()
 				.money(LocalMoney.of(1_000))
