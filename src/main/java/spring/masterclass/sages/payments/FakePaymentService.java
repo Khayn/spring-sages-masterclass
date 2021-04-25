@@ -1,13 +1,15 @@
 package spring.masterclass.sages.payments;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 
 import java.time.Instant;
 
 @Log
+@RequiredArgsConstructor
 public class FakePaymentService {
 	private static final String LOG_FORMAT = "A new payment of %s has been initiated";
-	private final UuidPaymentGenerator paymentGenerator = new UuidPaymentGenerator();
+	private final PaymentIdGenerator paymentGenerator;
 
 	public Payment process(PaymentRequest paymentRequest) {
 		var payment =

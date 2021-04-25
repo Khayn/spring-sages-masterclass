@@ -2,9 +2,10 @@ package spring.masterclass.sages.payments;
 
 import java.util.UUID;
 
-public class UuidPaymentGenerator {
+public class UuidPaymentGenerator implements PaymentIdGenerator {
 
-	public String getNext(){
+	@Override
+	public String getNext() {
 		return UUID.randomUUID().toString();
 	}
 }
