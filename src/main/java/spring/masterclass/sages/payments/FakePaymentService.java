@@ -8,13 +8,11 @@ import java.time.Instant;
 @Component
 @RequiredArgsConstructor
 public class FakePaymentService implements PaymentService {
-
 	private final PaymentIdGenerator paymentGenerator;
 
+	@LogPayments
 	@Override
 	public Payment process(PaymentRequest paymentRequest) {
-
-
 		return Payment.builder()
 				.id(paymentGenerator.getNext())
 				.money(paymentRequest.getMoney())
