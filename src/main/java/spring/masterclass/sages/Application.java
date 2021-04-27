@@ -1,7 +1,7 @@
 package spring.masterclass.sages;
 
 import lombok.extern.java.Log;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import spring.masterclass.sages.payments.LocalMoney;
 import spring.masterclass.sages.payments.PaymentRequest;
 import spring.masterclass.sages.payments.PaymentService;
@@ -9,12 +9,12 @@ import spring.masterclass.sages.payments.PaymentService;
 @Log
 public class Application {
 
-	private static final String BASE_PACKAGE = "spring.masterclass.sages";
+	private static final String CONFIG_LOCATION = "beans.xml";
 
 	public static void main(String[] args) {
 
-		try (AnnotationConfigApplicationContext applicationContext =
-					 new AnnotationConfigApplicationContext(BASE_PACKAGE)) {
+		try (ClassPathXmlApplicationContext applicationContext =
+					 new ClassPathXmlApplicationContext(CONFIG_LOCATION)) {
 			var paymentService = applicationContext.getBean(PaymentService.class);
 
 			var paymentRequest = PaymentRequest.builder()
