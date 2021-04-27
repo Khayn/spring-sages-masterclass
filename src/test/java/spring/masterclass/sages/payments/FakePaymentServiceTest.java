@@ -1,13 +1,17 @@
 package spring.masterclass.sages.payments;
 
 import org.javamoney.moneta.FastMoney;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.AdditionalAnswers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 class FakePaymentServiceTest {
@@ -23,33 +27,43 @@ class FakePaymentServiceTest {
 	@Mock
 	private PaymentIdGenerator paymentIdGenerator;
 
+	@Mock
+	private PaymentRepository paymentRepository;
+
 	private Payment payment;
 
 	@BeforeEach
 	void setUp() {
 		Mockito.when(paymentIdGenerator.getNext()).thenReturn(PAYMENT_ID);
+		Mockito.when(paymentRepository.save(Mockito.any(Payment.class)))
+				.then(AdditionalAnswers.returnsFirstArg());
 
-		FakePaymentService fakePaymentService = new FakePaymentService(paymentIdGenerator);
+		FakePaymentService fakePaymentService = new FakePaymentService(paymentIdGenerator, paymentRepository);
 		payment = fakePaymentService.process(PAYMENT_REQUEST);
 	}
 
 	@Test
 	void shouldAssignGeneratedIdToCreatedPayment() {
-		Assertions.assertEquals(PAYMENT_ID, payment.getId());
+		assertEquals(PAYMENT_ID, payment.getId());
 	}
 
 	@Test
 	void shouldAssignMoneyFromPaymentRequestToCreatedPayment() {
-		Assertions.assertEquals(MONEY, payment.getMoney());
+		assertEquals(MONEY, payment.getMoney());
 	}
 
 	@Test
 	void shouldAssignTimeStampToCreatedPayment() {
-		Assertions.assertNotNull(payment.getTimestamp());
+		assertNotNull(payment.getTimestamp());
 	}
 
 	@Test
 	void shouldAssignStartedStatusToCreatedPayment() {
-		Assertions.assertEquals(PaymentStatus.STARTED, payment.getStatus());
+		assertEquals(PaymentStatus.STARTED, payment.getStatus());
+	}
+
+	@Test
+	void shouldSaveCreatedPayment() {
+		verify(paymentRepository).save(payment);
 	}
 }

@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static java.lang.Long.parseLong;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class IncrementalPaymentIdGeneratorTest {
 
@@ -30,6 +31,6 @@ class IncrementalPaymentIdGeneratorTest {
 		long secondIdValue = parseLong(uut.getNext());
 
 		//then
-		Assertions.assertEquals(firstIdValue + 1L, secondIdValue);
+		assertEquals(firstIdValue + 1L, secondIdValue);
 	}
 }

@@ -1,8 +1,9 @@
 package spring.masterclass.sages.payments;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class UuidPaymentIdGeneratorTest {
 
@@ -17,6 +18,6 @@ class UuidPaymentIdGeneratorTest {
 		String actual = uut.getNext();
 
 		//then
-		Assertions.assertTrue(actual.matches(ID_FORMAT));
+		assertTrue(actual.matches(ID_FORMAT));
 	}
 }
