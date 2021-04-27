@@ -3,10 +3,8 @@ package spring.masterclass.sages.payments;
 import lombok.extern.java.Log;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
 @Log
 public class PaymentConsoleLogger {
 
