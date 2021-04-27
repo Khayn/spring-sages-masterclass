@@ -8,6 +8,7 @@ import java.time.Instant;
 @Component
 @RequiredArgsConstructor
 public class FakePaymentService implements PaymentService {
+
 	private final PaymentIdGenerator paymentGenerator;
 
 	@LogPayments

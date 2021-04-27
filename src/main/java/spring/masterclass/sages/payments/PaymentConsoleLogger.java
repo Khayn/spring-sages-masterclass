@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Log
 public class PaymentConsoleLogger {
+
 	private static final String LOG_FORMAT = "A new payment of %s has been initiated";
 
 	@AfterReturning(value = "@annotation(LogPayments)", returning = "payment")

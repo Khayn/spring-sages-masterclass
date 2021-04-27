@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class UuidPaymentGenerator implements PaymentIdGenerator {
+public class UuidPaymentIdGenerator implements PaymentIdGenerator {
 
 	@Override
 	public String getNext() {

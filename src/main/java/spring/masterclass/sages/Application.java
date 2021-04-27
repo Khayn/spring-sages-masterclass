@@ -8,6 +8,7 @@ import spring.masterclass.sages.payments.PaymentService;
 
 @Log
 public class Application {
+
 	private static final String BASE_PACKAGE = "spring.masterclass.sages";
 
 	public static void main(String[] args) {
