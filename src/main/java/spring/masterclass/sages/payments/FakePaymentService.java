@@ -1,17 +1,25 @@
 package spring.masterclass.sages.payments;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
+import lombok.extern.java.Log;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.time.Instant;
 
-@Component
-@RequiredArgsConstructor
+@Log
+@Service("paymentService")
 public class FakePaymentService implements PaymentService {
 
 	private final PaymentIdGenerator paymentGenerator;
 
 	private final PaymentRepository paymentRepository;
+
+	public FakePaymentService(@IdGenerator("uuid") PaymentIdGenerator paymentGenerator,
+							  PaymentRepository paymentRepository) {
+		this.paymentGenerator = paymentGenerator;
+		this.paymentRepository = paymentRepository;
+	}
 
 	@LogPayments
 	@Override
@@ -26,6 +34,15 @@ public class FakePaymentService implements PaymentService {
 		return paymentRepository.save(payment);
 	}
 
+	@PostConstruct
+	public void init() {
+		log.info("PaymentService initialized.");
+	}
+
+	@PreDestroy
+	public void destroy() {
+		log.info("PaymentService is going down.");
+	}
 }
 
 

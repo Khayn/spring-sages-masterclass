@@ -1,10 +1,8 @@
 package spring.masterclass.sages.payments;
 
-import org.springframework.stereotype.Component;
-
 import java.util.UUID;
 
-@Component
+@IdGenerator("uuid")
 public class UuidPaymentIdGenerator implements PaymentIdGenerator {
 
 	@Override
