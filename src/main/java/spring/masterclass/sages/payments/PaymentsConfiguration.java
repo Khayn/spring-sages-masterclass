@@ -26,6 +26,7 @@ public class PaymentsConfiguration {
 	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public PaymentService fakePaymentService(PaymentIdGenerator paymentIdGenerator,
 											 PaymentRepository paymentRepository) {
+
 		return new FakePaymentService(paymentIdGenerator, paymentRepository);
 	}
 
