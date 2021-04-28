@@ -20,16 +20,15 @@ class HashMapPaymentRepositoryTest {
 
 	private static final FastMoney MONEY = LocalMoney.of(1_000);
 
-	Payment PAYMENT = Payment.builder()
+	final Payment PAYMENT = Payment.builder()
 			.id(PAYMENT_ID)
 			.money(MONEY)
 			.timestamp(Instant.now())
 			.status(PaymentStatus.STARTED)
 			.build();
-
+	private final HashMapPaymentRepository uut = new HashMapPaymentRepository();
 	@Mock
 	private Map<String, Payment> payments;
-	private HashMapPaymentRepository uut = new HashMapPaymentRepository();
 
 	@BeforeEach
 	void setUp() {

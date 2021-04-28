@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class HashMapOrderRepository implements OrderRepository {
 
-	private Map<Long, Order> orders = new HashMap<>();
+	private final Map<Long, Order> orders = new HashMap<>();
 
 	private long index = 0;
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class HashMapProductRepository implements ProductRepository {
 
-	private Map<Long, Product> products = new HashMap<>();
+	private final Map<Long, Product> products = new HashMap<>();
 
 	private long index = 0;
 

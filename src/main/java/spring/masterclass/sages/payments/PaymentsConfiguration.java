@@ -1,5 +1,7 @@
 package spring.masterclass.sages.payments;
 
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -25,12 +27,14 @@ public class PaymentsConfiguration {
 
 	@Bean(initMethod = "init", destroyMethod = "destroy")
 	public PaymentService fakePaymentService(PaymentIdGenerator paymentIdGenerator,
-											 PaymentRepository paymentRepository) {
+											 PaymentRepository paymentRepository,
+											 ApplicationEventPublisher eventPublisher) {
 
-		return new FakePaymentService(paymentIdGenerator, paymentRepository);
+		return new FakePaymentService(paymentIdGenerator, paymentRepository, eventPublisher);
 	}
 
-	public PaymentConsoleLogger paymentConsoleLogger() {
-		return new PaymentConsoleLogger();
+	@Bean
+	public PaymentConsoleLogger paymentConsoleLogger(MessageSource messageSource) {
+		return new PaymentConsoleLogger(messageSource);
 	}
 }
