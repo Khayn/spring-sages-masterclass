@@ -9,6 +9,8 @@ import spring.masterclass.sages.payments.LocalMoney;
 import spring.masterclass.sages.payments.Payment;
 import spring.masterclass.sages.products.Product;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Data
@@ -16,18 +18,20 @@ import java.util.List;
 @NoArgsConstructor
 public class Order {
 
-	private Long id;
+    private Long id;
 
-	@NonNull
-	private List<Product> products;
+    @NotEmpty
+    @NonNull
+    private List<Product> products;
 
-	private Payment payment;
+    @Valid
+    private Payment payment;
 
-	public FastMoney getTotalPrice() {
-		return products
-				.stream()
-				.map(Product::getPrice)
-				.reduce(LocalMoney.zero(), FastMoney::add);
-	}
+    public FastMoney getTotalPrice() {
+        return products
+                .stream()
+                .map(Product::getPrice)
+                .reduce(LocalMoney.zero(), FastMoney::add);
+    }
 
 }

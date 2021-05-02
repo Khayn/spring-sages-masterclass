@@ -10,31 +10,32 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 @Configuration
 public class PaymentsConfiguration {
 
-	@Bean(name = "paymentIdGenerator")
-	public PaymentIdGenerator incrementalPaymentIdGenerator() {
-		return new IncrementalPaymentIdGenerator();
-	}
+    @Bean(name = "paymentIdGenerator")
+    public PaymentIdGenerator incrementalPaymentIdGenerator() {
+        return new IncrementalPaymentIdGenerator();
+    }
 
-	@Bean
-	public PaymentIdGenerator uuidPaymentIdGenerator() {
-		return new UuidPaymentIdGenerator();
-	}
+    @Bean
+    public PaymentIdGenerator uuidPaymentIdGenerator() {
+        return new UuidPaymentIdGenerator();
+    }
 
-	@Bean
-	public PaymentRepository paymentRepository() {
-		return new HashMapPaymentRepository();
-	}
+    @Bean
+    public PaymentRepository paymentRepository() {
+        return new HashMapPaymentRepository();
+    }
 
-	@Bean(initMethod = "init", destroyMethod = "destroy")
-	public PaymentService fakePaymentService(PaymentIdGenerator paymentIdGenerator,
-											 PaymentRepository paymentRepository,
-											 ApplicationEventPublisher eventPublisher) {
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    public PaymentService paymentService(PaymentIdGenerator paymentIdGenerator,
+                                         PaymentRepository paymentRepository,
+                                         ApplicationEventPublisher eventPublisher) {
 
-		return new FakePaymentService(paymentIdGenerator, paymentRepository, eventPublisher);
-	}
+        return new FakePaymentService(paymentIdGenerator, paymentRepository, eventPublisher);
+    }
 
-	@Bean
-	public PaymentConsoleLogger paymentConsoleLogger(MessageSource messageSource) {
-		return new PaymentConsoleLogger(messageSource);
-	}
+    @Bean
+    public PaymentConsoleLogger paymentConsoleLogger(MessageSource messageSource) {
+        return new PaymentConsoleLogger(messageSource);
+    }
+
 }
