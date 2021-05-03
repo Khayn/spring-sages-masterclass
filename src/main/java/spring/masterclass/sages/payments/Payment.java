@@ -26,7 +26,10 @@ public class Payment {
             @Column(name = "currency", length = 3),
             @Column(name = "value", length = 15)
     })
+
+    //@Type(type = "fastMoney")
     private FastMoney money;
+
     private Instant timestamp;
 
     @Enumerated(EnumType.STRING)

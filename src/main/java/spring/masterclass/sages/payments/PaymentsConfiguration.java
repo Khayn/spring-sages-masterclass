@@ -20,12 +20,6 @@ public class PaymentsConfiguration {
         return new UuidPaymentIdGenerator();
     }
 
-    @Bean
-    public PaymentRepository paymentRepository() {
-
-        return new JpaPaymentsRepository();
-    }
-
     @Bean(initMethod = "init", destroyMethod = "destroy")
     public PaymentService paymentService(PaymentIdGenerator uuidPaymentIdGenerator,
                                          PaymentRepository paymentRepository,
