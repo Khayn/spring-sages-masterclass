@@ -1,6 +1,5 @@
 package spring.masterclass.sages.payments;
 
-import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -22,9 +21,9 @@ public class PaymentsConfiguration {
     }
 
     @Bean
-    public PaymentRepository paymentRepository(SessionFactory sessionFactory) {
+    public PaymentRepository paymentRepository() {
 
-        return new HibernatePaymentRepository(sessionFactory);
+        return new JpaPaymentsRepository();
     }
 
     @Bean(initMethod = "init", destroyMethod = "destroy")

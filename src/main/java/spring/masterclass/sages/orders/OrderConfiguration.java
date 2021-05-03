@@ -1,6 +1,5 @@
 package spring.masterclass.sages.orders;
 
-import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 public class OrderConfiguration {
 
     @Bean
-    public OrderRepository orderRepository(SessionFactory sessionFactory) {
-        return new HibernateOrderRepository(sessionFactory);
+    public OrderRepository orderRepository() {
+        return new JpaOrderRepository();
     }
 
     @Bean

@@ -1,6 +1,5 @@
 package spring.masterclass.sages.products;
 
-import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 public class ProductConfiguration {
 
     @Bean
-    public ProductRepository productRepository(SessionFactory sessionFactory) {
-        return new HibernateProductRepository(sessionFactory);
+    public ProductRepository productRepository() {
+        return new JpaProductRepository();
     }
 
     @Bean
