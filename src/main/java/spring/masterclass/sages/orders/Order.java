@@ -14,8 +14,9 @@ import java.util.List;
 
 @Table(name = "orders")
 @Entity
-@Data
-@EqualsAndHashCode(exclude = "id")
+@Getter
+@Setter
+@ToString
 @RequiredArgsConstructor
 @NoArgsConstructor
 public class Order {

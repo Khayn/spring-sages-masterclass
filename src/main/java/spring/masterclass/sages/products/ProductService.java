@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.java.Log;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import spring.masterclass.sages.common.PagedResult;
 import spring.masterclass.sages.common.retry.Retry;
@@ -31,7 +30,7 @@ public class ProductService {
     }
 
     public PagedResult<Product> getAll(int pageNumber, int pageSize) {
-        Page<Product> productPage = productRepository.findAll(PageRequest.of(pageNumber, pageSize));
+        var productPage = productRepository.findAll(PageRequest.of(pageNumber, pageSize));
 
         return new PagedResult<>(productPage.getContent(), pageNumber, productPage.getTotalPages());
     }

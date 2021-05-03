@@ -1,5 +1,7 @@
 package spring.masterclass.sages.products;
 
 public enum ProductType {
-	BOOK, AUDIO, VIDEO
+    BOOK,
+    AUDIO,
+    VIDEO
 }

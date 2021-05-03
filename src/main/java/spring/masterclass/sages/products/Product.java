@@ -9,9 +9,10 @@ import javax.persistence.*;
 @NamedQuery(name = Product.SELECT_PRODUCTS, query = "select p from Product p")
 @Table(name = "products", indexes = @Index(name = "payment_type", columnList = "type"))
 @Entity
-@Data
-@EqualsAndHashCode(exclude = "id")
 @Builder
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {

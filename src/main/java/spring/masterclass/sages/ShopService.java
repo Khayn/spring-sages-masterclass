@@ -9,6 +9,7 @@ import spring.masterclass.sages.payments.PaymentRequest;
 import spring.masterclass.sages.payments.PaymentService;
 import spring.masterclass.sages.products.Product;
 import spring.masterclass.sages.products.ProductService;
+import spring.masterclass.sages.users.UserService;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ShopService {
     private final OrderService orderService;
     private final PaymentService paymentService;
     private final ProductService productService;
+    private final UserService userService;
 
 
     public Product addProduct(Product product) {
