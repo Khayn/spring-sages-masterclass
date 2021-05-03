@@ -19,10 +19,6 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import spring.masterclass.sages.orders.OrderService;
-import spring.masterclass.sages.payments.PaymentService;
-import spring.masterclass.sages.products.ProductService;
-import spring.masterclass.sages.users.UserService;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -39,13 +35,6 @@ public class ShopConfiguration {
     @Bean
     public CacheManager cacheManager() {
         return new ConcurrentMapCacheManager("products");
-    }
-
-    @Bean
-    public ShopService shopService(OrderService orderService, PaymentService paymentService,
-                                   ProductService productService, UserService userService) {
-
-        return new ShopService(orderService, paymentService, productService, userService);
     }
 
     @Bean

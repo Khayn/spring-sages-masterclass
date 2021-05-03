@@ -8,10 +8,12 @@ import org.springframework.data.domain.PageRequest;
 import spring.masterclass.sages.common.PagedResult;
 import spring.masterclass.sages.common.retry.Retry;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Log
+@Transactional
+@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;

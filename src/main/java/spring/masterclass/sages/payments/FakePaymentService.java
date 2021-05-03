@@ -5,9 +5,11 @@ import lombok.extern.java.Log;
 import org.springframework.context.ApplicationEventPublisher;
 import spring.masterclass.sages.common.profiler.ExecutionTime;
 
+import javax.transaction.Transactional;
 import java.time.Instant;
 
 @Log
+@Transactional
 @RequiredArgsConstructor
 public class FakePaymentService implements PaymentService {
 

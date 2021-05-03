@@ -3,6 +3,9 @@ package spring.masterclass.sages.orders;
 import lombok.RequiredArgsConstructor;
 import spring.masterclass.sages.common.validator.Validate;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @RequiredArgsConstructor
 public class OrderService {
 

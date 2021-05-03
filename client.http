@@ -1,0 +1,13 @@
+POST http://localhost:8080/spring-sages/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "email": "byku@example.com"
+}
+
+###
+
+GET http://localhost:8080/spring-sages/api/users/1
+Accept: application/json

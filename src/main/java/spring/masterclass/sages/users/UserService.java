@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import spring.masterclass.sages.common.PagedResult;
 
+import javax.transaction.Transactional;
+
+@Transactional
 @RequiredArgsConstructor
 public class UserService {
 
