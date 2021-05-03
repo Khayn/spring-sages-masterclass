@@ -1,8 +1,0 @@
-1
-/var/lib/postgresql/data/application
-1619998321
-5432
-/var/run/postgresql
-*
-  5432001         0
-ready   
