@@ -17,6 +17,7 @@ import javax.persistence.*;
 public class Product {
 
     public static final String SELECT_PRODUCTS = "selectProducts";
+
     @GeneratedValue
     @Id
     private Long id;

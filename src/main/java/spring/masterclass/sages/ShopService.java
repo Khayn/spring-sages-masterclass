@@ -11,6 +11,7 @@ import spring.masterclass.sages.products.Product;
 import spring.masterclass.sages.products.ProductService;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Transactional
 @RequiredArgsConstructor
@@ -23,6 +24,10 @@ public class ShopService {
 
     public Product addProduct(Product product) {
         return productService.add(product);
+    }
+
+    public List<Product> getByName(String name) {
+        return productService.getByName(name);
     }
 
     public PagedResult<Product> getProducts(int pageNumber, int pageSize) {

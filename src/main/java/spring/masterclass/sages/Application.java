@@ -48,6 +48,16 @@ public class Application {
             var payment = shopService.payForOrder(order.getId());
             log.info(payment.getId());
 
+            log.info("get by name: " +
+                    shopService
+                            .getByName("Spring")
+                            .toString());
+
+            log.info("get by name: " +
+                    shopService
+                            .getByName("Spring")
+                            .toString());
+
         }
 
     }
