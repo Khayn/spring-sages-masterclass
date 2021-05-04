@@ -1,0 +1,30 @@
+POST http://localhost:8080/spring-sages/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book)",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+GET http://localhost:8080/spring-sages/api/products/?nameFragment=practice
+Accept: application/json
+
+###
+
+GET http://localhost:8080/spring-sages/api/products/all
+Accept: application/json
+
+###
+
+POST http://localhost:8080/spring-sages/api/products/1/files
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="file"; filename="pom.xml"
+
+< ./pom.xml
+--WebAppBoundary--

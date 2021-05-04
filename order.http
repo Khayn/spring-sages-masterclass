@@ -1,0 +1,10 @@
+POST http://localhost:8080/spring-sages/api/orders
+Content-Type: application/json
+
+{
+  "products": [
+    {
+      "id": 1
+    }
+  ]
+}
