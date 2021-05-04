@@ -16,7 +16,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RequestMapping("/api/users")
 @RestController
 @RequiredArgsConstructor
-public class UserController {
+public class UserRestController {
 
     private final UserService userService;
     private final UserMapper userMapper;
@@ -49,7 +49,7 @@ public class UserController {
     public ResponseEntity<UserTransferObject> getUser(@PathVariable Long userId) {
         User user = userService.findById(userId);
         UserTransferObject userTransferObject = userMapper.toUserTransferObject(user);
-        userTransferObject.add(linkTo(methodOn(UserController.class)
+        userTransferObject.add(linkTo(methodOn(UserRestController.class)
                 .getUser(userId))
                 .withSelfRel());
 
@@ -66,12 +66,13 @@ public class UserController {
         return userMapper.toUserTransferObjectPage(users);
     }
 
-    //    @ExceptionHandler(UserNotFoundException.class)
-    //    public ResponseEntity<ExceptionTransferObject> onUserNotFound(UserNotFoundException exception) {
-    //
-    //        return ResponseEntity
-    //                .status(HttpStatus.NOT_FOUND)
-    //                .body(new ExceptionTransferObject("User not found"));
-    //    }
+    @GetMapping("/all")
+    public PagedResultTransferObject<UserTransferObject> getAllUsers(
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "5") int pageSize) {
+        var users = userService.getAll(pageNumber, pageSize);
+
+        return userMapper.toUserTransferObjectPage(users);
+    }
 
 }

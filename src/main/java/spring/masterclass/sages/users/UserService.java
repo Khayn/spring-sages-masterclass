@@ -29,5 +29,10 @@ public class UserService {
         return new PagedResult<>(userPage.getContent(), pageNumber, userPage.getTotalPages());
     }
 
+    public PagedResult<User> getAll(int pageNumber, int pageSize) {
+        var userPage = userRepository.findAll(PageRequest.of(pageNumber, pageSize));
+
+        return new PagedResult<>(userPage.getContent(), pageNumber, userPage.getTotalPages());
+    }
 
 }

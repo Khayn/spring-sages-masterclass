@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Khayn
-  Date: 04.05.2021
-  Time: 22:27
-  To change this template use File | Settings | File Templates.
---%>
 <meta charset="UTF-8">
 <!-- CSS only -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"

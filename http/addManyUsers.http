@@ -1,0 +1,76 @@
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "emailAddress": "byku@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Adam",
+  "lastName": "Żbik",
+  "emailAddress": "zbiku@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Anna",
+  "lastName": "Szpak",
+  "emailAddress": "ruda@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jacek",
+  "lastName": "Wąski",
+  "emailAddress": "cienki@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Stefania",
+  "lastName": "Paw",
+  "emailAddress": "stefa@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Hubert",
+  "lastName": "Wiewiór",
+  "emailAddress": "hubu@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Katarzyna",
+  "lastName": "Skowron",
+  "emailAddress": "dzika@example.com"
+}
+
+###
