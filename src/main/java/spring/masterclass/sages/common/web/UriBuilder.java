@@ -1,4 +1,4 @@
-package spring.masterclass.sages.common;
+package spring.masterclass.sages.common.web;
 
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 

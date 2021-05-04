@@ -23,7 +23,7 @@ public class UserService {
                 .orElseThrow(UserNotFoundException::new);
     }
 
-    public PagedResult<User> getByName(String lastNameFragment, int pageNumber, int pageSize) {
+    public PagedResult<User> getByLastName(String lastNameFragment, int pageNumber, int pageSize) {
         var userPage = userRepository.findByLastNameContaining(lastNameFragment, PageRequest.of(pageNumber, pageSize));
 
         return new PagedResult<>(userPage.getContent(), pageNumber, userPage.getTotalPages());

@@ -2,10 +2,16 @@ package spring.masterclass.sages.users;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import spring.masterclass.sages.common.UriBuilder;
+import spring.masterclass.sages.common.web.PagedResultTransferObject;
+import spring.masterclass.sages.common.web.UriBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RequestMapping("/api/users")
 @RestController
@@ -13,10 +19,20 @@ import java.net.URI;
 public class UserController {
 
     private final UserService userService;
-    private UriBuilder uriBuilder = new UriBuilder();
+    private final UserMapper userMapper;
+    private final UriBuilder uriBuilder = new UriBuilder();
 
     @PostMapping
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody UserTransferObject userTransferObject,
+                                        BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity
+                    .badRequest()
+                    .build();
+        }
+
+        User user = userMapper.toUser(userTransferObject);
         Long userId = userService
                 .add(user)
                 .getId();
@@ -30,10 +46,32 @@ public class UserController {
     }
 
     @GetMapping("{userId}")
-    public ResponseEntity<User> getUser(@PathVariable Long userId) {
+    public ResponseEntity<UserTransferObject> getUser(@PathVariable Long userId) {
         User user = userService.findById(userId);
+        UserTransferObject userTransferObject = userMapper.toUserTransferObject(user);
+        userTransferObject.add(linkTo(methodOn(UserController.class)
+                .getUser(userId))
+                .withSelfRel());
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userTransferObject);
     }
+
+    @GetMapping
+    public PagedResultTransferObject<UserTransferObject> getUsersByLastName(
+            @RequestParam String lastNameFragment,
+            @RequestParam(defaultValue = "0") int pageNumber,
+            @RequestParam(defaultValue = "5") int pageSize) {
+        var users = userService.getByLastName(lastNameFragment, pageNumber, pageSize);
+
+        return userMapper.toUserTransferObjectPage(users);
+    }
+
+    //    @ExceptionHandler(UserNotFoundException.class)
+    //    public ResponseEntity<ExceptionTransferObject> onUserNotFound(UserNotFoundException exception) {
+    //
+    //        return ResponseEntity
+    //                .status(HttpStatus.NOT_FOUND)
+    //                .body(new ExceptionTransferObject("User not found"));
+    //    }
 
 }
