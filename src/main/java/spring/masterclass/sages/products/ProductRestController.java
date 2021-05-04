@@ -15,7 +15,7 @@ import java.net.URI;
 @RequestMapping("/api/products")
 @RestController
 @RequiredArgsConstructor
-public class ProductController {
+public class ProductRestController {
 
     private final ProductService productService;
     private final ProductMapper productMapper;

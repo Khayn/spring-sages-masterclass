@@ -1,0 +1,83 @@
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book)",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 2",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 3",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 4",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 5",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 6",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###
+
+POST http://localhost:8080/api/products
+Content-Type: application/json
+
+{
+  "name": "Microservices in practice (e-book) 7",
+  "description": "Book",
+  "price": "100.99 PLN",
+  "type": "EBOOK"
+}
+
+###

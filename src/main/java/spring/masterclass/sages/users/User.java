@@ -2,7 +2,7 @@ package spring.masterclass.sages.users;
 
 import lombok.*;
 import spring.masterclass.sages.common.BaseEntity;
-import spring.masterclass.sages.common.validator.Name;
+import spring.masterclass.sages.users.validator.Name;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

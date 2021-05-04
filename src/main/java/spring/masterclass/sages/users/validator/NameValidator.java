@@ -1,4 +1,4 @@
-package spring.masterclass.sages.common.validator;
+package spring.masterclass.sages.users.validator;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
