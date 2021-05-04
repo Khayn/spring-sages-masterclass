@@ -4,7 +4,7 @@
     <deployment>
       <artifact name="spring-masterclass-sages:war">
         <settings>
-          <option name="CONTEXT_PATH" value="/spring-sages/" />
+          <option name="CONTEXT_PATH" value="" />
         </settings>
       </artifact>
     </deployment>
@@ -82,7 +82,7 @@
     <method v="2">
       <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="clean install" />
       <option name="BuildArtifacts" enabled="true">
-        <artifact name="spring-masterclass-sages:war exploded" />
+        <artifact name="spring-masterclass-sages:war" />
       </option>
       <option name="Make" enabled="true" />
     </method>

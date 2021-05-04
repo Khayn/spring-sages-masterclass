@@ -1,0 +1,34 @@
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "emailAddress": "byku@example.com"
+}
+
+###
+
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "firstName": "Jan",
+  "lastName": "Kowalski",
+  "emailAddress": "invalid-email"
+}
+
+###
+
+GET http://localhost:8080/api/users/1
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/users/99
+Accept: application/json
+
+###
+
+GET http://localhost:8080/api/users/?lastNameFragment=Kow
+Accept: application/json

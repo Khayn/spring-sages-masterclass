@@ -1,4 +1,4 @@
-POST http://localhost:8080/spring-sages/api/products
+POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
@@ -10,21 +10,21 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:8080/spring-sages/api/products/?nameFragment=practice
+GET http://localhost:8080/api/products/?nameFragment=practice
 Accept: application/json
 
 ###
 
-GET http://localhost:8080/spring-sages/api/products/all
+GET http://localhost:8080/api/products/all
 Accept: application/json
 
 ###
 
-POST http://localhost:8080/spring-sages/api/products/1/files
+POST http://localhost:8080/api/products/1/files
 Content-Type: multipart/form-data; boundary=WebAppBoundary
 
 --WebAppBoundary
 Content-Disposition: form-data; name="file"; filename="pom.xml"
 
-< ./pom.xml
+< ../pom.xml
 --WebAppBoundary--

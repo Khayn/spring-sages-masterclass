@@ -1,4 +1,4 @@
-POST http://localhost:8080/spring-sages/api/orders
+POST http://localhost:8080/api/orders
 Content-Type: application/json
 
 {
