@@ -1,0 +1,23 @@
+<div *ngIf="pagedResult">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of pagedResult.data">
+      <td>{{user.firstName}}</td>
+      <td>{{user.lastName}}</td>
+      <td>{{user.emailAddress}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <button (click)="previous()" *ngIf="pagedResult.pageNumber !==0" class="btn btn-sm btn-outline-primary">Previous
+  </button>
+  <button (click)="next()" *ngIf="pagedResult.pageNumber < pagedResult.totalPages -1"
+          class="btn btn-sm btn-outline-primary float-right">Previous
+  </button>
+</div>

@@ -50,6 +50,15 @@ public class MvcConfiguration implements WebMvcConfigurer {
                 .setViewName("index");
     }
 
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry
+                .addMapping("/api/**")
+                .allowedMethods("*")
+                .allowedHeaders("*")
+                .allowedOrigins("http://localhost:4200");
+    }
+
     @Bean
     public StandardServletMultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();

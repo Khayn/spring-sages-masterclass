@@ -21,6 +21,7 @@ public class ProductRestController {
     private final ProductMapper productMapper;
     private final UriBuilder uriBuilder = new UriBuilder();
 
+    @CrossOrigin
     @PostMapping
     public ResponseEntity<Product> addProduct(@Valid @RequestBody ProductTransferObject productTransferObject,
                                               BindingResult bindingResult) {
