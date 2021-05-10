@@ -12,7 +12,7 @@ import spring.masterclass.sages.common.web.UriBuilder;
 import javax.validation.Valid;
 import java.net.URI;
 
-@RequestMapping("/api/products")
+@RequestMapping("${apiPrefix}/products")
 @RestController
 @RequiredArgsConstructor
 public class ProductRestController {
