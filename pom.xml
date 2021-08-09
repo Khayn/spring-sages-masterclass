@@ -11,17 +11,36 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <name>spring-masterclass-sages</name>
+    <description>Learning Spring with Sages: https://kursy.sages.pl/kursy/spring-framework-basic/</description>
+    <url>https://github.com/Khayn/spring-sages-masterclass</url>
+
     <groupId>pl.khayn.dev</groupId>
     <artifactId>spring-masterclass-sages</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <java.version>16</java.version>
+<!--        <java.version>16</java.version>-->
+        <maven.compiler.release>16</maven.compiler.release>
+
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
+        <archetype.encoding>${encoding}</archetype.encoding>
 
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.20</lombok.version>
         <swagger.version>2.9.2</swagger.version>
+        <maven.javadoc.plugin>3.3.0</maven.javadoc.plugin>
     </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:Khayn/spring-sages-masterclass.git</connection>
+        <developerConnection>scm:git:git@github.com:Khayn/spring-sages-masterclass.git</developerConnection>
+        <url>https://github.com/Khayn/spring-sages-masterclass</url>
+        <tag>@{project.version}</tag>
+    </scm>
 
     <build>
         <plugins>
@@ -30,6 +49,27 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>2.4.5</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
+                <configuration>
+                    <show>private</show>
+                    <nohelp>true</nohelp>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -114,5 +154,17 @@
         </dependency>
     </dependencies>
 
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven.javadoc.plugin}</version>
+                <configuration>
+                    <show>private</show>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
