@@ -10,7 +10,7 @@ spring:
       location: ${java.io.tmpdir}
   mvc:
     view:
-      prefix: /WEB-INF/jsp/
+      prefix: /WEB-INF/views/
       suffix: .jsp
   h2:
     console:
