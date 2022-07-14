@@ -119,5 +119,7 @@
       }
     }
   },
-  "defaultProject": "spring-sages-ui"
+  "cli": {
+    "analytics": false
+  }
 }
