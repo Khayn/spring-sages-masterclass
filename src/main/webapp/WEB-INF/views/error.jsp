@@ -3,7 +3,7 @@
 
 <head>
     <%@ include file="resources.jsp" %>
-    <title><s:message code="index.errorPageTitle"</title>
+    <title><s:message code="index.errorPageTitle"></title>
 </head>
 
 <body>
