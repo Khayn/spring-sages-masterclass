@@ -31,7 +31,7 @@
 
         <mapstruct.version>1.4.2.Final</mapstruct.version>
         <lombok.version>1.18.20</lombok.version>
-        <swagger.version>3.0.0</swagger.version>
+        <swagger.version>2.9.2</swagger.version>
         <maven.javadoc.plugin>3.3.0</maven.javadoc.plugin>
     </properties>
 
